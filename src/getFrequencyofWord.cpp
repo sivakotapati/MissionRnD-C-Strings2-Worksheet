@@ -11,12 +11,40 @@ Note: Dont modify original str or word,Just return count ,Spaces can also be par
 */
 
 #include <stdlib.h>
-
+int string_length(char *);
 int count_word_in_str_way_1(char *str, char *word){
-	return 0;
+	//returns the no.of times a word occured in a string
+
+	int n=0, m = 0;
+	//getting lengths of string and word
+	n = string_length(str);
+	m = string_length(word);
+
+	int i, j,count=0;
+	//checking for word in the string
+	for (i = 0; i < n; i++){
+		for (j =0; j < m&&i+j<n; j++){
+			//mismatch 
+			if (str[i + j] != word[j]){
+				break;
+			}
+			//match found
+			if (j == m-1) count++;
+		}
+	}
+	return count;
 }
 
 int count_word_int_str_way_2_recursion(char *str, char *word){
 	return 0;
 }
 
+int string_length(char *s){
+	//returns length of string
+	if (s == NULL){
+		return 0;
+	}
+	int i=0;
+	for (i = 0; s[i]; i++);
+	return i;
+}
